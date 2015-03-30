@@ -30,7 +30,7 @@ index.htmlの１ページのみでページ遷移が表現できるため、ヘ�
 デモ
 -----
 
-	こちら*[demo](http://shunsuketakahashi.me/web_proto) よりご確認頂けます。
+こちら* [demo](http://shunsuketakahashi.me/web_proto) よりご確認頂けます。
 
 
 その他
