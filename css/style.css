@@ -1,3 +1,25 @@
 body{
 	font-family:“メイリオ”, Meiryo, serif;
 }
+
+.red{
+	background-color: rgba(255,0,0,0.5);
+}
+
+.green{
+	background-color: rgba(0,255,0,0.5);
+}
+
+.yellow{
+	background-color: rgba(255,255,0,0.5);
+}
+
+.blue{
+	background-color: rgba(0,0,255,0.5);
+}
+
+.page-box{
+	width: 500px;
+	height: 500px;
+}
+
