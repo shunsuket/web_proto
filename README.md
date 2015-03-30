@@ -25,16 +25,16 @@ index.htmlの１ページのみでページ遷移が表現できるため、ヘ�
 インストール方法
 -----------
 
-	zipでダウンロードするか、wget等で適宜ご利用ください。
+* zipでダウンロードするか、wget等で適宜ご利用ください。
 
 デモ
 -----
 
-こちら* [demo](http://shunsuketakahashi.me/web_proto) よりご確認頂けます。
+こちら [demo](http://shunsuketakahashi.me/web_proto) よりご確認頂けます。
 
 
 その他
 ------------
 
-	ご連絡は適宜twitter(@shuntaka)または,facebook(shunsuke.takahashi2)までお願いします。
+ご連絡は適宜[twitter](http://twitter.com/shuntaka)または,[facebook](http://facebook.com/shunsuke.takahashi2)までお願いします。
 
