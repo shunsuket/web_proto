@@ -1,160 +1,45 @@
 <!DOCTYPE HTML>
 <html lang="ja">
 	<head>
-		<title>d3.jsの練習</title>
+		<title>web service prototyping package</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=yes,minimal-ui">	
 		<link rel="stylesheet" type="text/css" href="css/cssreset-min.css">
 		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-			
 	</head>
 	<body>
 
-		<div class="color-bar" id="color-bar1" number="20" max="30"></div>	
-		<div class="color-bar" id="color-bar2" number="30" max="30"></div>	
-		<div class="color-bar" id="color-bar3" number="15" max="15"></div>	
+		<div id="page-first" class="page-box red">
+			<h1>page-first</h1>
+			<a id="page-2"><button class="">page-2へ</button></a>	
+			<a id="page-3"><button class="">page-3へ</button></a>	
+			<a id="page-4"><button class="">page-4へ</button></a>	
+		</div><!-- end first-page -->
+	
+		<div id="page-2" class="page-box green">
+			<h1>page-2</h1>
+			<a id="page-first"><button class="">page-1へ</button></a>	
+			<a id="page-3"><button class="">page-3へ</button></a>	
+			<a id="page-4"><button class="">page-4へ</button></a>	
+		</div><!-- end page-2 -->
 
-		
-		<script type="text/javascript" src="js/d3.min.js"></script>
+		<div id="page-3" class="page-box blue">
+			<h1>page-3</h1>
+			<a id="page-first"><button class="">page-1へ</button></a>	
+			<a id="page-2"><button class="">page-2へ</button></a>	
+			<a id="page-4"><button class="">page-4へ</button></a>	
+		</div><!-- end page-3 -->
+
+		<div id="page-4" class="page-box yellow">
+			<h1>page-4</h1>
+			<a id="page-first"><button class="">page-1へ</button></a>	
+			<a id="page-2"><button class="">page-2へ</button></a>	
+			<a id="page-3"><button class="">page-3へ</button></a>	
+		</div><!-- end page-4 -->
+
 		<script type="text/javascript" src="js/jquery.js"></script>
-		<script type="text/javascript" src="js/functions.js"></script>
 		<script type="text/javascript" src="js/script.js"></script>
-		<script>
-		
-			$(function(){
-				$('div[id^=color-bar]').each(function(){
-
-					var number = $(this).attr("number");
-					var max = $(this).attr("max");
-					var colorCode = "#00aced";
-					var divid = $(this).context.id;
-				
-					makeColorBar(number,max,colorCode,divid);	
-				
-				});
-			});
-		
-
-		/*
-			var dataset = [11,25,46,30,33];		
 	
-			var w = 500;
-			var h = 200;
-			var padding = 20;	
-		
-			var xScale = d3.scale.linear()
-							.domain([0,d3.max(dataset)])
-							.range([padding,w-padding])
-							.nice();	
-			
-			var svg = d3.select("body").append("svg").attr({width:w, height:h});	
-		
-			var xAxis = d3.svg.axis()
-							.scale(xScale)
-							.orient("bottom");	
-			
-			svg.append("g")
-				.attr({
-					class: "axis",
-					transform: "translate(0, 180)"
-				})
-				.call(xAxis);	
-		
-			
-			svg.selectAll("rect")
-				.data(dataset)
-				.enter()
-				.append("rect")
-				.attr({
-					x: padding,
-					y: function(d, i) { return 25 + (i * 25); },
-					width: function(d){ return xScale(d) - padding; },
-					height: 20,
-					fill: "red"		
-				});
-		
-			svg.selectAll("circle")	
-				.data(dataset)
-				.enter()
-				.append("circle")
-				.on("mouseover",function(d){
-					d3.select(this).attr("fill","orange");
-				})
-				.on("mouseout",function(d){
-					d3.select(this).attr("fill","red");		
-				})
-				.on("click",function(d){
-					var rs = d3.select(this).attr("r");
-					alert(rs);
-				})
-				.transition()
-				.delay(function(d, i){
-					return i * 300;		
-				})	
-				.duration(1000)
-				.ease("bounce")	
-				.each("start",function(){
-					d3.select(this).attr({
-						fill: "green",
-						r: 0,
-						cy: h		
-					});
-				})
-				.attr({
-					cx: function(d, i) { return 50 + (i*100); },
-					cy: h / 2,
-					r: function(d, i){ return d; },
-					fill: "red"	
-				});
-
-			var dataset = [12,24];	
-			var p = d3.select("body").selectAll("p");
-	
-			var update = p.data(dataset);
-			var enter = update.enter();
-
-			var exit = update.exit();
-			
-			update.text(function(d){
-				return "update: " + d;
-			});
-	
-			exit.style("color","red");	
-		
-			update.text(function(d){
-				return "update: " + d;
-			});
-	
-			enter.append("p")
-				.text(function(d){
-					return "enter: " + d;		
-				});
-		
-			p.data(dataset).text(function(d,i){
-				return i+"番目は"+d+"です！";	
-			});	
-	
-			p.text("hello from d3");	
-			p.style("font-size","28px");	
-			p.text("hello from d#!")
-				.style({
-					"font-size":"30px",
-					"font-weight":"lighter"
-				});
-	
-			alert(p.style("font-size"));	
-		
-		
-			p.style("font-size",function(){
-				return Math.floor(Math.random() * 100) + "px";		
-			});
-	
-			d3.select("body").append("p").text("hello 4").remove();	
-		
-		*/
-		
-		
-		</script>	
 	</body>
 </html>
